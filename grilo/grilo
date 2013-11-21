@@ -1,0 +1,125 @@
+#!/bin/bash
+#
+# grilo \
+  Copyright 2013 Zandre Bran (abrandao@students.ic.unicamp.br)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>
+#
+
+#pt: lista de pacotes requeridos? (ubuntu,fedora,arch,...)???
+# alsa-utils 
+# wget
+
+function f_cardsound () {
+if [ $1 = "-" ]
+then
+amixer -D pulse set Master 10%-
+fi
+
+if [ $1 = "+" ]                                                     
+then                                                                  
+amixer -D pulse set Master 10%+
+fi
+
+if [ $1 = "%" ]
+then
+#cat /proc/asound/cards
+card_sounds=$(lspci | grep -i audio | wc -l)
+i=0
+
+while [  $i -lt $card_sounds ]; 
+do
+
+amixer -D pulse -c $i set Master 100%+
+let i+=1 
+
+done
+
+fi #$1="%"
+}
+
+function f_restart () {
+#FIXME criar um daemom para estes serviços do usuário???
+kill -9 $(pgrep -fu $(whoami) orca) &>/dev/null
+wait
+
+kill -9 $(pgrep -fu $(whoami) speech-dispatcher) &>/dev/null
+wait
+
+pulseaudio --kill
+wait
+
+pulseaudio --start 
+wait
+
+f_cardsound "%"
+
+orca --replace &
+exit 0
+}
+
+function f_ping () {
+#FIXME tradução para outros idiomas fora do código
+SPDSAY_OK="Seriços de audio e acessibilidade funcionando."
+
+pgrep -lfu $(whoami) pulseaudio || f_restart
+pgrep -lfu $(whoami) orca || f_restart
+pgrep -lfu $(whoami) speech-dispatcher || f_restart 
+
+f_cardsound "%"
+
+#FIXME arquivo de tradução
+spd-say $SPDSAY_OK || exit 1
+exit 0
+}
+
+case "$1" in
+"")
+#FIXME manpage
+echo "Usage: grilo [-c|--check] [-r|--restart] [+] [-]"
+exit 1
+;;
+
+-c | --check)
+f_ping 
+exit 0
+;;
+
+-r | --restart)
+f_restart
+exit 0
+;;
+
+-i | --install)
+#TODO
+exit 0
+;;
+
+-h | --help)
+#TODO
+exit 0
+;;
+
+-)
+f_cardsound "-"
+exit 0
+;;
+
++)
+f_cardsound "+"
+exit 0
+;;
+
+esac
+

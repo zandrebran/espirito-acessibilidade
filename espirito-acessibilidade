@@ -17,48 +17,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 #
 
-#===================================================================
-# INSTALL GRILO 0.1
-#===================================================================
-GRILO="0.1"
-
 ls $HOME/.espirito-acessibilidade
 if [ $? -eq 1 ]
 then
 mkdir $HOME/.espirito-acessibilidade
 fi
-
-ls $HOME/.espirito-acessibilidade/grilo 
-if [ $? -eq 0 ]
-then
-rm -f $HOME/.espirito-acessibilidade/grilo
-fi
-
-ls $HOME/.espirito-acessibilidade/grilo_$GRILO
-if [ $? -eq 0 ]
-then
-rm -f $HOME/.espirito-acessibilidade/grilo_$GRILO
-fi
-
-cp -f grilo/grilo $HOME/.espirito-acessibilidade/grilo_$GRILO
-if [ $? -eq 1 ]
-then
-exit 1
-fi
-
-chmod +x $HOME/.espirito-acessibilidade/grilo_$GRILO
-if [ $? -eq 1 ]
-then
-exit 1
-fi
-
-ln -s ~/.espirito-acessibilidade/grilo_$GRILO \
-$HOME/.espirito-acessibilidade/grilo
-if [ $? -eq 1 ]
-then
-exit 1
-fi
-
 
 if [ $(echo $PATH | grep ".espirito-acessibilidade" | wc -l) -eq 0 ]
 then
@@ -68,6 +31,29 @@ export PATH""" >> $HOME/.bash_profile
 #FIXME ubuntu tb é no .bash_profile??
 . $HOME/.bash_profile
 fi
+
+# GRILO 
+#===================================================================
+ls $HOME/.espirito-acessibilidade/grilo 
+if [ $? -eq 0 ]
+then
+rm -f $HOME/.espirito-acessibilidade/grilo
+fi
+
+cp -f grilo/grilo $HOME/.espirito-acessibilidade/grilo
+if [ $? -eq 1 ]
+then
+exit 1
+fi
+
+chmod +x $HOME/.espirito-acessibilidade/grilo
+if [ $? -eq 1 ]
+then
+exit 1
+fi
+
+
+
 
 #FIXME criar atalho para o usuário CTRL+ALT+K para grilo -r
 #FIXME atalhos para aumentar e baixar o volume

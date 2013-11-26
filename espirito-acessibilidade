@@ -55,7 +55,7 @@ fi
 
 # KEYBINDS
 #====================================================================
-bash keybinds/keybinds
+bash keybinds/keybinds --install
 wait
 
 # FIM

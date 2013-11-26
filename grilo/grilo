@@ -46,7 +46,7 @@ let i+=1
 
 done
 
-fi #$1="%"
+fi 
 }
 
 function f_restart () {

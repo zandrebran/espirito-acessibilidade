@@ -22,8 +22,15 @@
 #http://www.linuxacessivel.org/documentos/teclas-de-atalho/teclas-especiais-do-sistema/
 
 # CTRL+ALT+K (custom0) - "grilo -r"
+# <Alt>Page_Up (custom1) - "aumenta o som"
+# <Alt>Page_Down (custom2) - "diminue o som"
 
-#keybindind CTRL+ALT+K (custom-0)
+
+
+function f_setkey () {
+
+#====================================================================
+# CTRL+ALT+K (custom0) - "grilo -r"
 gsettings set org.gnome.settings-daemon.plugins.media-keys \
 custom-keybindings \
 "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
@@ -40,3 +47,73 @@ gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
 binding "<Primary><Alt>K"
 
+# ===================================================================
+# <Alt>Page_Up (custom1) - "aumenta o som"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys \
+custom-keybindings \
+"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+name "Aumenta volume do audio"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+command "grilo +"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
+binding "<Alt>Page_Up"
+
+# ===================================================================
+# <Alt>Page_Down (custom2) - "diminue o som"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys \
+custom-keybindings \
+"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+name "Diminue volume do audio"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+command "grilo -"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
+binding "<Alt>Page_Down"
+}
+
+
+
+
+
+
+
+
+
+}
+
+case "$1" in
+"")
+#TODO
+echo "Usage: keybinds [-l | --list] [-i | --install]"
+exit 1
+;;
+
+-l | --list)
+#TODO exibe a lista de todos os atalhos
+;;
+
+-h | --help)
+#TODO 
+exit 0
+;;
+
+-i | --install)
+f_setkey
+exit 0
+;;
+esac

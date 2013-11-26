@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# espirito-acessibilidade \
+# keybinds \
   Copyright 2013 Zandre Bran (abrandao@students.ic.unicamp.br)
 #
 # This program is free software: you can redistribute it and/or
@@ -19,4 +19,27 @@
 # along with this program.  If not, see
 # <http://www.gnu.org/licenses/>
 #
+#http://www.linuxacessivel.org/documentos/teclas-de-atalho/teclas-especiais-do-sistema/
 
+# CTRL+ALT+K (custom0) - "grilo -r"
+
+CUSTOM=0
+
+#keybindind CTRL+ALT+K (custom-0)
+gsettings set org.gnome.settings-daemon.plugins.media-keys \
+custom-keybindings \
+"[/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$CUSTOM/]"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$CUSTOM/ \
+name "Reinicia sistema de audio e acessibilidade"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$CUSTOM/ \
+command "grilo -r"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$CUSTOM/ \
+binding "<Primary><Alt>K"
+
+let CUSTOM+=1

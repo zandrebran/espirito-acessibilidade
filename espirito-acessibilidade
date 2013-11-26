@@ -17,10 +17,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 #
 
-ls $HOME/.espirito-acessibilidade
+ls $HOME/.espirito-acessibilidade/
 if [ $? -eq 1 ]
 then
-mkdir $HOME/.espirito-acessibilidade
+mkdir $HOME/.espirito-acessibilidade/
+chmod -R +x $HOME/.espirito-acessibilidade/
 fi
 
 if [ $(echo $PATH | grep ".espirito-acessibilidade" | wc -l) -eq 0 ]

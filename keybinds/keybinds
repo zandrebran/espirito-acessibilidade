@@ -63,7 +63,7 @@ org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settin
 command "grilo +"
 
 gsettings set \
-org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
 binding "<Alt>Page_Up"
 
 # ===================================================================
@@ -71,29 +71,19 @@ binding "<Alt>Page_Up"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys \
 custom-keybindings \
-"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
 
 gsettings set \
-org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
 name "Diminue volume do audio"
 
 gsettings set \
-org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
 command "grilo -"
 
 gsettings set \
-org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
 binding "<Alt>Page_Down"
-}
-
-
-
-
-
-
-
-
-
 }
 
 case "$1" in

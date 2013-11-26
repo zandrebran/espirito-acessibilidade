@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# keybinds \
-  Copyright 2013 Zandre Bran (abrandao@students.ic.unicamp.br)
+# keybinds 
+# Copyright 2013 Zandre Bran (abrandao@students.ic.unicamp.br)
 #
 # This program is free software: you can redistribute it and/or
 # modify
@@ -23,23 +23,20 @@
 
 # CTRL+ALT+K (custom0) - "grilo -r"
 
-CUSTOM=0
-
 #keybindind CTRL+ALT+K (custom-0)
 gsettings set org.gnome.settings-daemon.plugins.media-keys \
 custom-keybindings \
-"[/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$CUSTOM/]"
+"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 
 gsettings set \
-org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$CUSTOM/ \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
 name "Reinicia sistema de audio e acessibilidade"
 
 gsettings set \
-org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$CUSTOM/ \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
 command "grilo -r"
 
 gsettings set \
-org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$CUSTOM/ \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
 binding "<Primary><Alt>K"
 
-let CUSTOM+=1

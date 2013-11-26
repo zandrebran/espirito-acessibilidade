@@ -34,7 +34,7 @@ export PATH""" >> $HOME/.bash_profile
 fi
 
 # GRILO 
-#===================================================================
+#====================================================================
 ls $HOME/.espirito-acessibilidade/grilo 
 if [ $? -eq 0 ]
 then
@@ -53,26 +53,14 @@ then
 exit 1
 fi
 
-#keybindind CTRL+ALT+K (custom-0)
-gsettings set org.gnome.settings-daemon.plugins.media-keys \
-custom-keybindings \
-"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+# KEYBINDS
+#====================================================================
+bash keybinds/keybinds
+wait
 
-gsettings set \
-org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
-name "Reinicia sistema de audio e acessibilidade"
-
-gsettings set \
-org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
-command "grilo -r"
-
-gsettings set \
-org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \ 
-binding "<Primary><Alt>K"
-
-#FIXME atalhos para aumentar e baixar o volume
+# FIM
+#====================================================================
 
 #FIXME arquivo de tradução
-spd-say "Instalação do Grilo concluída."
+spd-say "Programa espirito acessibilidade concluído."
 
-#===================================================================

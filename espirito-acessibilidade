@@ -52,10 +52,23 @@ then
 exit 1
 fi
 
+#keybindind CTRL+ALT+K (custom-0)
+gsettings set org.gnome.settings-daemon.plugins.media-keys \
+custom-keybindings \
+"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
+name "Reinicia sistema de audio e acessibilidade"
 
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
+command "grilo -r"
 
-#FIXME criar atalho para o usuário CTRL+ALT+K para grilo -r
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \ 
+binding "<Primary><Alt>K"
+
 #FIXME atalhos para aumentar e baixar o volume
 
 #FIXME arquivo de tradução

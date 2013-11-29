@@ -18,6 +18,7 @@
 #
 
 gsettings set org.gnome.desktop.interface toolkit-accessibility true
+gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true
 gsettings set org.gnome.desktop.interface enable-animations false
 
 ls $HOME/.espirito-acessibilidade/

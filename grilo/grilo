@@ -65,7 +65,7 @@ wait
 
 f_cardsound "%"
 
-orca --replace &
+/usr/bin/python /usr/bin/orca --replace --disable main-window,splash-window --enable speech,braille &
 exit 0
 }
 

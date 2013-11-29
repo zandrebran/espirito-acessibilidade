@@ -84,6 +84,25 @@ command "grilo -"
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
 binding "<Alt>Page_Down"
+
+# ===================================================================
+# <Alt>End (custom3) - "liga|delisga som"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys \
+custom-keybindings \
+"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \
+name "Liga ou Desliga audio"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \
+command "amixer sset Master toggle"
+
+gsettings set \
+org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \
+binding "<Alt>End"
 }
 
 case "$1" in

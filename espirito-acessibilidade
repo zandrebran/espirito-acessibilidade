@@ -17,6 +17,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 #
 
+gsettings set org.gnome.desktop.interface toolkit-accessibility true
+gsettings set org.gnome.desktop.interface enable-animations false
+
 ls $HOME/.espirito-acessibilidade/
 if [ $? -eq 1 ]
 then

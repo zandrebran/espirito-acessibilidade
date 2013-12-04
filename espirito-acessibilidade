@@ -22,17 +22,12 @@ gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true
 gsettings set org.gnome.desktop.interface enable-animations false
 gsettings set org.gnome.desktop.thumbnailers disable-all true
 
-ls $HOME/.espirito-acessibilidade/
-if [ $? -eq 1 ]
-then
-mkdir $HOME/.espirito-acessibilidade/ || exit 1
-chmod -R +x $HOME/.espirito-acessibilidade/ || exit 1
-fi
+chmod -R 755 $HOME/espirito-acessibilidade/
 
-if [ $(echo $PATH | grep ".espirito-acessibilidade" | wc -l) -eq 0 ]
+if [ $(echo $PATH | grep "espirito-acessibilidade" | wc -l) -eq 0 ]
 then
 echo """
-PATH=$PATH:$HOME/.espirito-acessibilidade
+PATH=$PATH:$HOME/espirito-acessibilidade/
 export PATH""" >> $HOME/.bash_profile
 #FIXME ubuntu tb é no .bash_profile??
 . $HOME/.bash_profile
@@ -40,19 +35,7 @@ fi
 
 # GRILO 
 #====================================================================
-ls $HOME/.espirito-acessibilidade/grilo 
-if [ $? -eq 0 ]
-then
-rm -f $HOME/.espirito-acessibilidade/grilo
-fi
-
-cp -f grilo/grilo $HOME/.espirito-acessibilidade/grilo
-if [ $? -eq 1 ]
-then
-exit 1
-fi
-
-chmod +x $HOME/.espirito-acessibilidade/grilo
+ln -s $HOME/espirito-acessibilidade/grilo/grilo $HOME/espirito-acessibilidade/grilo
 if [ $? -eq 1 ]
 then
 exit 1

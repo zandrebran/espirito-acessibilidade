@@ -58,17 +58,9 @@ export PATH""" >> $HOME/.bash_profile
 . $HOME/.bash_profile
 fi
 
-# GRILO 
-#====================================================================
-ln -s $HOME/espirito-acessibilidade/grilo/grilo $HOME/espirito-acessibilidade/grilo
-if [ $? -eq 1 ]
-then
-exit 1
-fi
-
 # KEYBINDS
 #====================================================================
-bash keybinds/keybinds --install
+bash keybinds --install
 wait
 
 # FIM

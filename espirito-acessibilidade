@@ -15,12 +15,37 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
-#
 
+
+#FIXME: Criar um arquivo especifico, chamado setting.
+# Configurações do Gnome (3.10.4)
+#====================================================================
 gsettings set org.gnome.desktop.interface toolkit-accessibility true
 gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true
 gsettings set org.gnome.desktop.interface enable-animations false
 gsettings set org.gnome.desktop.thumbnailers disable-all true
+
+gsettings set org.gnome.nautilus.desktop background-fade false
+gsettings set org.gnome.nautilus.list-view default-visible-columns ['name']
+gsettings set org.gnome.nautilus.list-view use-tree-view true
+#gsettings set org.gnome.nautilus.preferences always-use-location-entry true
+gsettings set org.gnome.nautilus.preferences default-folder-viwer ['list-view']
+gsettings set org.gnome.nautilus.preferences enable-delete true
+gsettings set org.gnome.nautilus.preferences executable-text-activation ['ask']
+gsettings set org.gnome.nautilus.preferences show-image-thumbnails ['never']
+gsettings set org.gnome.nautilus.preferences sort-directories-first true
+gsettings set org.gnome.nautilus.window-state start-with-sidebar false
+
+gsettings set org.gnome.login-screen disable-user-list true
+
+gsettings set org.gnome.shell always-show-log-out true
+
+gsettings set org.gnome.Terminal.Legacy.Settings mnemonics-enabled true
+
+gsettings set org.gtk.Settings.FileChooser expand-folders true
+
+gsettings set org.gnome.desktop.background show-desktop-icons true
+
 
 chmod -R 755 $HOME/espirito-acessibilidade/
 

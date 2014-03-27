@@ -11,21 +11,27 @@
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+# GNU General Public License 
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-chmod -R 755 $HOME/espirito-acessibilidade/
-
 if [ $(echo $PATH | grep "espirito-acessibilidade" | wc -l) -eq 0 ]
 then
 echo """
+EA_DIR=$HOME/espirito-acessibilidade/
 PATH=$PATH:$HOME/espirito-acessibilidade/
 export PATH""" >> $HOME/.bash_profile
-#FIXME ubuntu tb é no .bash_profile??
 . $HOME/.bash_profile
 fi
+
+chmod -R 755 $EA_DIR
+
+# backup dconf - only first time
+#====================================================================
+ls ${EA_DIR}gsettings_backup &>/dev/null || dconf dump / > ${EA_DIR}gsettings_backup
+# recovery backup
+# dconf load / < ${EA_DIR}settings_backup
 
 # settings
 #====================================================================
@@ -37,7 +43,7 @@ wait
 bash keybinds --install
 wait
 
-# FIM
+# END
 #====================================================================
 
 #FIXME arquivo de tradução

@@ -18,7 +18,7 @@
 
 MYSELF="espirito-acessibilidade"
 
-#yum -y install lynx links elinks xpdf screen xclip clpbar mutt wget mc newsbeuter sylpheed
+#yum -y install lynx links elinks xpdf screen xclip clpbar mutt wget mc newsbeuter sylpheed mplayer emacs epiphany
 
 if [ $(echo $PATH | grep $MYSELF | wc -l) -eq 0 ]
 then
@@ -30,6 +30,15 @@ export PATH""" >> $HOME/.bash_profile
 fi
 
 chmod -R 755 $EA_DIR
+
+# carrega arquivo de tradução
+#${EA_DIR}lang_$( echo $LANG | awk -F "." {' print $1 '} | tr [A-Z] [a-z] )
+
+#if [ $? -ne 0 ]
+#then
+#    #padrão pt_br
+#    ${EA_DIR}lang_pt_br
+#fi
 
 # backup dconf - only first time
 #====================================================================
@@ -51,5 +60,5 @@ wait
 #====================================================================
 
 #FIXME arquivo de tradução
-spd-say "Programa espirito acessibilidade concluído."
+#spd-say $EA_CONCLUIDO
 

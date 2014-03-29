@@ -16,11 +16,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-if [ $(echo $PATH | grep "espirito-acessibilidade" | wc -l) -eq 0 ]
+MYSELF="espirito-acessibilidade"
+
+#yum -y install lynx links elinks xpdf screen xclip clpbar mutt wget mc newsbeuter sylpheed
+
+if [ $(echo $PATH | grep $MYSELF | wc -l) -eq 0 ]
 then
 echo """
-EA_DIR=$HOME/espirito-acessibilidade/
-PATH=$PATH:$HOME/espirito-acessibilidade/
+EA_DIR=$HOME/$MYSELF/
+PATH=$PATH:$HOME/$MYSELF/
 export PATH""" >> $HOME/.bash_profile
 . $HOME/.bash_profile
 fi

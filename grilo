@@ -78,7 +78,7 @@ pgrep -lfu $(whoami) speech-dispatcher || f_restart
 
 f_cardsound "%"
 
-spd-say "_GRILO_SPDOK" || exit 1
+/usr/bin/spd-say "${GRILO_SPDOK}" || exit 1
 exit 0
 }
 

@@ -44,7 +44,7 @@ EA_LANG=${EA_DIR}${EA_LANG}
 export EA_LANG
 EA_OS=${EA_OS}
 export EA_OS
-PATH=${PATH}:${HOME}/${EA_MINIMI}/
+PATH=${PATH}:${EA_DIR}
 export PATH""" >> ${HOME}/.bash_profile
 . ${HOME}/.bash_profile
 fi

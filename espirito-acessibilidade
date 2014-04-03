@@ -18,28 +18,48 @@
 
 #yum -y install lynx links elinks xpdf screen xclip clpbar mutt wget mc newsbeuter sylpheed mplayer emacs epiphany
 
-if [ $(echo $PATH | grep $MYSELF | wc -l) -eq 0 ]
-then
-echo """
-EA_DIR=$HOME/$MYSELF/
-PATH=$PATH:$HOME/$MYSELF/
-export PATH""" >> $HOME/.bash_profile
-. $HOME/.bash_profile
-fi
-
-chmod -R 755 $EA_DIR
-
-if [ -s $LANG ] 
+if [ -z "${LANG}" ] 
 then
 exit 1
 fi
 
-/bin/bash ${EA_DIR}lang_$( echo $LANG | awk -F "." {' print $1 '} | tr [A-Z] [a-z] )
+EA_MINIMI="espirito-acessibilidade"
+EA_DIR="${HOME}/${MINI_MI}/"
+EA_LANG=${EA_DIR}"lang_"$( echo $LANG | awk -F . {' print $1 '} | tr [A-Z] [a-z] )
+EA_OS=$( lsb_release -is | tr [A-Z] [a-z] )
 
+
+if [ ${EA_OS}!="ubuntu" -a ${EA_OS}!="fedora" ]
+then
+exit 1
+fi
+
+EA_OS="${EA_DIR}dist_${EA_OS}"
+
+if [ $(echo $PATH | grep $EA_MINIMI | wc -l) -eq 0 ]
+then
+echo """
+EA_DIR=${EA_DIR}
+export EA_DIR
+EA_LANG=${EA_DIR}${EA_LANG}
+export EA_LANG
+EA_OS=${EA_OS}
+export EA_OS
+PATH=${PATH}:${HOME}/${EA_MINIMI}/
+export PATH""" >> ${HOME}/.bash_profile
+. ${HOME}/.bash_profile
+fi
+
+chmod -R 755 ${EA_DIR}*
+
+# LANGUAGE
+#====================================================================
+/bin/bash ${EA_DIR}lang_$( echo ${LANG} | awk -F . {' print $1 '} | tr [A-Z] [a-z] )
 if [ $? -ne 0 ]
 then
-    # padrão
-    ${EA_DIR}lang_pt_br
+# language default
+#/bin/bash ${EA_DIR}lang_pt_br
+exit 1
 fi
 
 # backup dconf - only first time
@@ -48,19 +68,16 @@ ls ${EA_DIR}gsettings_backup &>/dev/null || dconf dump / > ${EA_DIR}gsettings_ba
 # recovery backup
 # dconf load / < ${EA_DIR}settings_backup
 
-# settings
+# SETTINGS
 #====================================================================
-/bin/bash ${EA_DIR}settings
+/bin/bash "${EA_DIR}settings"
 wait
 
 # KEYBINDS
 #====================================================================
-/bin/bash ${EA_DIR}keybinds --install
+/bin/bash "${EA_DIR}keybinds --install"
 wait
 
 # END
 #====================================================================
-
-#FIXME arquivo de tradução
-spd-say $EA_CONCLUIDO
-
+spd-say "$EA_INSTALLOK"

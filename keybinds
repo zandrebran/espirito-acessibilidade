@@ -33,7 +33,7 @@ custom-keybindings \
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
-name "Reinicia sistema de audio e acessibilidade"
+name "$KEYBINDS_CUSTOM0"
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
@@ -52,7 +52,7 @@ custom-keybindings \
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
-name "Aumenta volume do audio"
+name "$KEYBINDS_CUSTOM1"
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
@@ -71,7 +71,7 @@ custom-keybindings \
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
-name "Diminue volume do audio"
+name "$KEYNINDS_CUSTOM2"
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
@@ -90,7 +90,7 @@ custom-keybindings \
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \
-name "Liga ou Desliga audio"
+name "$KEYBINDS_CUSTOM3"
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \

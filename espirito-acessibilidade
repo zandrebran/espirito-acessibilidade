@@ -16,8 +16,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-MYSELF="espirito-acessibilidade"
-
 #yum -y install lynx links elinks xpdf screen xclip clpbar mutt wget mc newsbeuter sylpheed mplayer emacs epiphany
 
 if [ $(echo $PATH | grep $MYSELF | wc -l) -eq 0 ]
@@ -31,14 +29,18 @@ fi
 
 chmod -R 755 $EA_DIR
 
-# carrega arquivo de tradução
-#${EA_DIR}lang_$( echo $LANG | awk -F "." {' print $1 '} | tr [A-Z] [a-z] )
+if [ -s $LANG ] 
+then
+exit 1
+fi
 
-#if [ $? -ne 0 ]
-#then
-#    #padrão pt_br
-#    ${EA_DIR}lang_pt_br
-#fi
+/bin/bash ${EA_DIR}lang_$( echo $LANG | awk -F "." {' print $1 '} | tr [A-Z] [a-z] )
+
+if [ $? -ne 0 ]
+then
+    # padrão
+    ${EA_DIR}lang_pt_br
+fi
 
 # backup dconf - only first time
 #====================================================================
@@ -48,17 +50,17 @@ ls ${EA_DIR}gsettings_backup &>/dev/null || dconf dump / > ${EA_DIR}gsettings_ba
 
 # settings
 #====================================================================
-bash settings
+/bin/bash ${EA_DIR}settings
 wait
 
 # KEYBINDS
 #====================================================================
-bash keybinds --install
+/bin/bash ${EA_DIR}keybinds --install
 wait
 
 # END
 #====================================================================
 
 #FIXME arquivo de tradução
-#spd-say $EA_CONCLUIDO
+spd-say $EA_CONCLUIDO
 

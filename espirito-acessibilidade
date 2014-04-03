@@ -50,7 +50,11 @@ export PATH""" >> ${HOME}/.bash_profile
 . ${HOME}/.bash_profile
 fi
 
-chmod -R 755 ${EA_DIR}*
+rm -rf ${EA_DIR}
+mkdir ${EA_DIR} || exit 1
+cp "${EA_DIR}-master/*" ${EA_DIR} || exit 1
+rm -rf "${EA_DIR}-master" 
+chmod -R 755 ${EA_DIR} || exit 1
 
 # LANGUAGE
 #====================================================================

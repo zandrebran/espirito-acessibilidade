@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# lang_en_us
+# Copyright 2013 Zandre Bran (abrandao@students.ic.unicamp.br)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>
+
+export EA_INSTALLOK="Configuração do Espirito Acessibilidade foi concluído."
+
+export KEYBINDS_CUSTOM0="Reinicia sistema de audio e acessibilidade."
+export KEYBINDS_CUSTOM1="Aumenta volume do audio."
+export KEYBINDS_CUSTOM2="Diminue volume do audio."
+export KEYBINDS_CUSTOM3="Liga ou desliga audio."
+
+export GRILO_SPDOK="Seriços de audio e acessibilidade funcionando."
+

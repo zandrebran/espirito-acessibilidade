@@ -24,7 +24,7 @@ exit 1
 fi
 
 EA_MINIMI="espirito-acessibilidade"
-EA_DIR="${HOME}/${MINI_MI}/"
+EA_DIR="${HOME}/${EA_MINIMI}/"
 EA_LANG=${EA_DIR}"lang_"$( echo $LANG | awk -F . {' print $1 '} | tr [A-Z] [a-z] )
 EA_OS=$( lsb_release -is | tr [A-Z] [a-z] )
 
@@ -50,8 +50,8 @@ export PATH""" >> ${HOME}/.bash_profile
 fi
 
 mkdir ${EA_DIR} || exit 1
-cp "${HOME}/${MINI_MI}-master/*" ${EA_DIR} || exit 1
-rm -rf "${HOME}/${MINI_MI}-master" 
+cp "${HOME}/${EA_MINIMI}-master/*" ${EA_DIR} || exit 1
+rm -rf "${HOME}/${EA_MINIMI}-master" 
 chmod -R 755 ${EA_DIR} || exit 1
 
 # LANGUAGE

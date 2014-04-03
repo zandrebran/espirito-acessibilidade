@@ -49,7 +49,6 @@ export PATH""" >> ${HOME}/.bash_profile
 . ${HOME}/.bash_profile
 fi
 
-#rm -rf ${EA_DIR}
 mkdir ${EA_DIR} || exit 1
 cp "${HOME}/${MINI_MI}-master/*" ${EA_DIR} || exit 1
 rm -rf "${HOME}/${MINI_MI}-master" 

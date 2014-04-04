@@ -56,7 +56,7 @@ chmod -R 755 ${EA_DIR} || exit 1
 
 # LANGUAGE - varaibles
 #====================================================================
-source "${EA_DIR}lang_$( echo ${LANG} | awk -F . {' print $1 '} | tr [A-Z] [a-z] )"
+source ${EA_DIR}lang_$( echo ${LANG} | awk -F . {' print $1 '} | tr [A-Z] [a-z] )
 if [ $? -ne 0 ]
 then
 # language default
@@ -72,12 +72,12 @@ ls ${EA_DIR}gsettings_backup &>/dev/null || dconf dump / > ${EA_DIR}gsettings_ba
 
 # SETTINGS
 #====================================================================
-/bin/bash "${EA_DIR}settings" || exit 1
+/bin/bash ${EA_DIR}settings || exit 1
 wait
 
 # KEYBINDS
 #====================================================================
-/bin/bash "${EA_DIR}keybinds --install" || exit 1
+/bin/bash ${EA_DIR}keybinds --install || exit 1
 wait
 
 # END

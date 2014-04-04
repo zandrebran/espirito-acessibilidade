@@ -64,7 +64,7 @@ then
 exit 1
 fi
 
-# backup dconf - only first time
+# DCONF BACKUP - only first time
 #====================================================================
 ls ${EA_DIR}gsettings_backup &>/dev/null || dconf dump / > ${EA_DIR}gsettings_backup
 # recovery backup

@@ -54,9 +54,9 @@ cp ${HOME}${EA_MINIMI}-master/* ${EA_DIR} || exit 1
 rm -rf ${HOME}${EA_MINIMI}-master 
 chmod -R 755 ${EA_DIR} || exit 1
 
-# LANGUAGE
+# LANGUAGE - varaibles
 #====================================================================
-/bin/bash "${EA_DIR}lang_$( echo ${LANG} | awk -F . {' print $1 '} | tr [A-Z] [a-z] )"
+source "${EA_DIR}lang_$( echo ${LANG} | awk -F . {' print $1 '} | tr [A-Z] [a-z] )"
 if [ $? -ne 0 ]
 then
 # language default

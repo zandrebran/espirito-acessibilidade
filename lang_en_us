@@ -23,5 +23,5 @@ export KEYBINDS_CUSTOM1="Aumenta volume do audio."
 export KEYBINDS_CUSTOM2="Diminue volume do audio."
 export KEYBINDS_CUSTOM3="Liga ou desliga audio."
 
-export GRILO_SPDOK="Seriços de audio e acessibilidade funcionando."
+GRILO_SPDOK="Seriços de audio e acessibilidade funcionando."
 

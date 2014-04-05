@@ -72,12 +72,12 @@ ls ${EA_DIR}gsettings_backup &>/dev/null || dconf dump / > ${EA_DIR}gsettings_ba
 
 # SETTINGS
 #====================================================================
-/bin/bash ${EA_DIR}settings || exit 1
+exec /bin/bash ${EA_DIR}settings || exit 1
 wait
 
 # KEYBINDS
 #====================================================================
-/bin/bash ${EA_DIR}keybinds --install || exit 1
+exec /bin/bash ${EA_DIR}keybinds --install || exit 1
 wait
 
 # END

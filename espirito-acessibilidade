@@ -28,7 +28,7 @@ EA_DIR="${HOME}${EA_MINIMI}/"
 EA_LANG="${EA_DIR}lang_$( echo $LANG | awk -F . {' print $1 '} | tr [A-Z] [a-z] )"
 EA_OS="$( lsb_release -is | tr [A-Z] [a-z] )"
 
-if [ ${EA_OS}!="ubuntu" && ${EA_OS}!="fedora" ]
+if [ ${EA_OS}!="ubuntu" ] && [ ${EA_OS}!="fedora" ]
 then
 exit 1
 fi

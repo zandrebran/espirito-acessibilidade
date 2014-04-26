@@ -24,31 +24,21 @@
 GRILO_SPDOK=$( cat $EA_LANG | grep GRILO_SPDOK | awk -F = '{ print $2 }')
 
 function f_cardsound () {
-if [ $1 = "-" ]
-then
-amixer -D pulse set Master 10%-
-fi
+test $1 = "-" && exec amixer -D pulse set Master 10%-
+test $1 = "+" && exec amixer -D pulse set Master 10%+
 
-if [ $1 = "+" ]                                                     
-then                                                                  
-amixer -D pulse set Master 10%+
-fi
-
-if [ $1 = "%" ]
-then
+test $1 = "%" && {
 #cat /proc/asound/cards
 card_sounds=$(lspci | grep -i audio | wc -l)
 i=0
 
 while [  $i -lt $card_sounds ]; 
 do
-
-amixer -D pulse -c $i set Master 100%+
+exec amixer -D pulse -c $i set Master 100%+
 let i+=1 
-
 done
+}
 
-fi 
 }
 
 function f_restart () {
@@ -59,15 +49,15 @@ wait
 kill -9 $(pgrep -fu $(whoami) speech-dispatcher) &>/dev/null
 wait
 
-pulseaudio --kill
+exec pulseaudio --kill
 wait
 
-pulseaudio --start 
+exec pulseaudio --start 
 wait
 
 f_cardsound "%"
 
-/usr/bin/python /usr/bin/orca --replace --disable main-window,splash-window --enable speech,braille &
+exec /usr/bin/python /usr/bin/orca --replace --disable main-window,splash-window --enable speech,braille &
 exit 0
 }
 

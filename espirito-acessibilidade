@@ -22,7 +22,7 @@ test -z "${LANG}" && exit 1
 
 #FIXME pegar de onde está sendo (/pasta/arquivo) este script executado e fazer a instalacao sobre ele
 EA_MINIMI="espirito-acessibilidade-master"
-EA_DIR="${HOME}/${EA_MINIMI}/"
+EA_DIR="${HOME}${EA_MINIMI}/"
 
 #FIXME unzip falhou? unzip errado? trabalhar unzip!
 test $( ls -d ${EA_DIR} ) || exit 1
@@ -37,7 +37,8 @@ test ${EA_OS} != "ubuntu" && test ${EA_OS} != "fedora" && exit 1
 EA_OS="${EA_DIR}dist_${EA_OS}"
 test $( ls ${EA_DIR}dist_${EA_OS} ) || exit 1
 
-test $( echo $PATH | grep $EA_MINIMI | wc -l ) -eq 0 && {
+test $( echo $PATH | grep $EA_MINIMI | wc -l ) -eq 0 && 
+{
 echo """
 EA_DIR=${EA_DIR}
 export EA_DIR
@@ -46,8 +47,11 @@ export EA_LANG
 EA_OS=${EA_OS}
 export EA_OS
 PATH=${PATH}:${EA_DIR}
-export PATH""" >> ${HOME}/.bash_profile
-source ${HOME}/.bash_profile
+export PATH""" >> ${HOME}.bash_profile
+
+source ${HOME}.bash_profile
+test $? -ne 0 && exit 1
+
 }
 
 # LANGUAGE - varaibles

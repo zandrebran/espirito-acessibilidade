@@ -37,8 +37,7 @@ test ${EA_OS} != "ubuntu" && test ${EA_OS} != "fedora" && exit 1
 EA_OS="${EA_DIR}dist_${EA_OS}"
 test $( ls ${EA_DIR}dist_${EA_OS} ) || exit 1
 
-test $( echo $PATH | grep $EA_MINIMI | wc -l ) -eq 0 && 
-{
+test $( echo $PATH | grep $EA_MINIMI | wc -l ) -eq 0 && {
 echo """
 EA_DIR=${EA_DIR}
 export EA_DIR
@@ -51,7 +50,6 @@ export PATH""" >> ${HOME}.bash_profile
 
 source ${HOME}.bash_profile
 test $? -ne 0 && exit 1
-
 }
 
 # LANGUAGE - varaibles

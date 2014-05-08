@@ -55,7 +55,7 @@ test $? -ne 0 && exit 1
 # LANGUAGE - varaibles
 #====================================================================
 source ${EA_DIR}lang_$( echo ${LANG} | awk -F . {' print $1 '} | tr [A-Z] [a-z] )
-test $? -ne 0 {
+test $? -ne 0 && {
 # language default
 #/bin/bash ${EA_DIR}lang_pt_br
 exit 1

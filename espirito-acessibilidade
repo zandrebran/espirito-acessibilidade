@@ -34,7 +34,7 @@ test $( ls ${EA_LANG} ) || exit 1
 EA_OS="$( lsb_release -is | tr [A-Z] [a-z] )"
 test ${EA_OS} != "ubuntu" && test ${EA_OS} != "fedora" && exit 1
 
-EA_OS="${EA_DIR}dist_${EA_OS}"
+EA_OS=$( echo "${EA_DIR}dist_${EA_OS}" )
 test $( ls ${EA_DIR}dist_${EA_OS} ) || exit 1
 
 test $( echo $PATH | grep $EA_MINIMI | wc -l ) -eq 0 && {

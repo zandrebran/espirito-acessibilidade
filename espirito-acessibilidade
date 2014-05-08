@@ -29,7 +29,7 @@ test $( ls -d ${EA_DIR} ) || exit 1
 chmod -R 755 ${EA_DIR} || exit 1
 
 EA_LANG="${EA_DIR}lang_$( echo $LANG | awk -F . {' print $1 '} | tr [A-Z] [a-z] )"
-test $( ls ${EA_LANG ) || exit 1
+test $( ls ${EA_LANG} ) || exit 1
 
 EA_OS="$( lsb_release -is | tr [A-Z] [a-z] )"
 test ${EA_OS} != "ubuntu" && test ${EA_OS} != "fedora" && exit 1

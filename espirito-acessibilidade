@@ -20,33 +20,35 @@
 
 test -z "${LANG}" && exit 1
 
-EA_MINIMI="espirito-acessibilidade"
-EA_DIR="${HOME}${EA_MINIMI}/"
-EA_LANG="${EA_DIR}lang_$( echo $LANG | awk -F . {' print $1 '} | tr [A-Z] [a-z] )"
-EA_OS="$( lsb_release -is | tr [A-Z] [a-z] )"
+#FIXME pegar de onde está sendo (/pasta/arquivo) este script executado e fazer a instalacao sobre ele
+EA_MINIMI="espirito-acessibilidade-master"
+EA_DIR="${HOME}/${EA_MINIMI}/"
 
+#FIXME unzip falhou? unzip errado? trabalhar unzip!
+test $( ls -d ${EA_DIR} ) || exit 1
+test $( chmod -R 755 ${EA_DIR} ) || exit 1
+
+EA_LANG="${EA_DIR}lang_$( echo $LANG | awk -F . {' print $1 '} | tr [A-Z] [a-z] )"
+test $( ls ${EA_LANG ) || exit 1
+
+EA_OS="$( lsb_release -is | tr [A-Z] [a-z] )"
 test ${EA_OS} != "ubuntu" && test ${EA_OS} != "fedora" && exit 1
 
 EA_OS="${EA_DIR}dist_${EA_OS}"
+test $( ls ${EA_DIR}dist_${EA_OS} ) || exit 1
 
 test $( echo $PATH | grep $EA_MINIMI | wc -l ) -eq 0 && {
 echo """
 EA_DIR=${EA_DIR}
 export EA_DIR
-EA_LANG=${EA_DIR}${EA_LANG}
+EA_LANG=${EA_LANG}
 export EA_LANG
 EA_OS=${EA_OS}
 export EA_OS
 PATH=${PATH}:${EA_DIR}
-export PATH""" >> ${HOME}.bash_profile
-source ${HOME}.bash_profile
+export PATH""" >> ${HOME}/.bash_profile
+source ${HOME}/.bash_profile
 }
-
-
-mkdir ${EA_DIR} || exit 1
-cp ${HOME}${EA_MINIMI}-master/* ${EA_DIR} || exit 1
-rm -rf ${HOME}${EA_MINIMI}-master 
-chmod -R 755 ${EA_DIR} || exit 1
 
 # LANGUAGE - varaibles
 #====================================================================
@@ -59,7 +61,7 @@ exit 1
 
 # DCONF BACKUP - only first time
 #====================================================================
-ls ${EA_DIR}gsettings_backup &>/dev/null || dconf dump / > ${EA_DIR}gsettings_backup
+test $( ls ${EA_DIR}gsettings_backup ) || dconf dump / > ${EA_DIR}gsettings_backup 
 # recovery backup
 # dconf load / < ${EA_DIR}settings_backup
 
@@ -75,5 +77,5 @@ wait
 
 # END
 #====================================================================
-spd-say "$EA_INSTALLOK" || exit 1
+exec spd-say "$EA_INSTALLOK" || exit 1
 

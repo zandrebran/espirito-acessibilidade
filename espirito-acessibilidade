@@ -26,7 +26,7 @@ EA_DIR="${HOME}${EA_MINIMI}/"
 
 #FIXME unzip falhou? unzip errado? trabalhar unzip!
 test $( ls -d ${EA_DIR} ) || exit 1
-test $( chmod -R 755 ${EA_DIR} ) || exit 1
+chmod -R 755 ${EA_DIR} || exit 1
 
 EA_LANG="${EA_DIR}lang_$( echo $LANG | awk -F . {' print $1 '} | tr [A-Z] [a-z] )"
 test $( ls ${EA_LANG ) || exit 1

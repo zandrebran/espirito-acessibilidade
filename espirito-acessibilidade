@@ -69,15 +69,15 @@ test $( ls ${EA_DIR}gsettings_backup ) || dconf dump / > ${EA_DIR}gsettings_back
 
 # SETTINGS
 #====================================================================
-exec /bin/bash ${EA_DIR}settings || exit 1
+/bin/bash ${EA_DIR}settings || exit 1
 wait
 
 # KEYBINDS
 #====================================================================
-exec /bin/bash ${EA_DIR}keybinds --install || exit 1
+/bin/bash ${EA_DIR}keybinds --install || exit 1
 wait
 
 # END
 #====================================================================
-exec spd-say "$EA_INSTALLOK" || exit 1
+spd-say "$EA_INSTALLOK" || exit 1
 

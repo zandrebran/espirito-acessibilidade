@@ -25,11 +25,16 @@
 
 function f_setkey () {
 
-#====================================================================
-# CTRL+ALT+K (custom0) - "grilo -r"
 gsettings set org.gnome.settings-daemon.plugins.media-keys \
 custom-keybindings \
-"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/' \
+,'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/' \
+,'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/' \
+,'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/' \
+]"
+
+#====================================================================
+# CTRL+ALT+K (custom0) - "grilo -r"
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ \
@@ -46,10 +51,6 @@ binding "<Primary><Alt>K"
 # ===================================================================
 # <Alt>Page_Up (custom1) - "aumenta o som"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys \
-custom-keybindings \
-"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
-
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ \
 name "$KEYBINDS_CUSTOM1"
@@ -65,10 +66,6 @@ binding "<Alt>Page_Up"
 # ===================================================================
 # <Alt>Page_Down (custom2) - "diminue o som"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys \
-custom-keybindings \
-"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
-
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
 name "$KEYNINDS_CUSTOM2"
@@ -83,10 +80,6 @@ binding "<Alt>Page_Down"
 
 # ===================================================================
 # <Alt>End (custom3) - "liga|delisga som"
-
-gsettings set org.gnome.settings-daemon.plugins.media-keys \
-custom-keybindings \
-"['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ \

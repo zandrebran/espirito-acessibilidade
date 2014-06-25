@@ -22,7 +22,7 @@ test -z "${LANG}" && exit 1
 
 #FIXME pegar de onde está sendo (/pasta/arquivo) este script executado e fazer a instalacao sobre ele
 EA_MINIMI="espirito-acessibilidade-master"
-EA_DIR="${HOME}${EA_MINIMI}/"
+EA_DIR="${HOME}/${EA_MINIMI}/"
 
 #FIXME unzip falhou? unzip errado? trabalhar unzip!
 test $( ls -d ${EA_DIR} ) || exit 1

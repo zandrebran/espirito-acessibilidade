@@ -31,7 +31,8 @@ chmod -R 755 ${EA_DIR} || exit 1
 EA_LANG="${EA_DIR}lang_$( echo $LANG | awk -F . {' print $1 '} | tr [A-Z] [a-z] )"
 test $( ls ${EA_LANG} ) || exit 1
 
-EA_OS="$( lsb_release -is | tr [A-Z] [a-z] )"
+#EA_OS="$( lsb_release -is | tr [A-Z] [a-z] )" necessario pacote redhat-lsb-core
+EA_OS="$( head -n1 /etc/issue | awk {'print $1'} | tr [A-Z] [a-z] )"
 test ${EA_OS} != "ubuntu" && test ${EA_OS} != "fedora" && exit 1
 
 EA_OS=$( echo "${EA_DIR}dist_${EA_OS}" )
@@ -45,10 +46,11 @@ EA_LANG=${EA_LANG}
 export EA_LANG
 EA_OS=${EA_OS}
 export EA_OS
-PATH=${PATH}:${EA_DIR}
-export PATH""" >> ${HOME}.bash_profile
+PATH="""'$PATH':${EA_DIR} >> ${HOME}/.bash_profile
 
-source ${HOME}.bash_profile
+echo "export PATH" >> ${HOME}/.bash_profile
+
+source ${HOME}/.bash_profile
 test $? -ne 0 && exit 1
 }
 

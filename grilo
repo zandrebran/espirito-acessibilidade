@@ -34,7 +34,7 @@ i=0
 
 while [  $i -lt $card_sounds ]; 
 do
-exec amixer -D pulse -c $i set Master 100%+
+amixer -D pulse -c $i set Master 100%+
 let i+=1 
 done
 }
@@ -49,15 +49,15 @@ wait
 kill -9 $(pgrep -fu $(whoami) speech-dispatcher) &>/dev/null
 wait
 
-exec pulseaudio --kill
+pulseaudio --kill
 wait
 
-exec pulseaudio --start 
+pulseaudio --start 
 wait
 
 f_cardsound "%"
+/usr/bin/orca --disable=braille,braille-monitor --enable=speech --replace
 
-exec /usr/bin/python /usr/bin/orca --replace --disable main-window,splash-window --enable speech,braille &
 exit 0
 }
 

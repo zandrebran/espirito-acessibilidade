@@ -22,6 +22,7 @@
 # CTRL+ALT+K (custom0) - "grilo -r"
 # <Alt>Page_Up (custom1) - "aumenta o som"
 # <Alt>Page_Down (custom2) - "diminue o som"
+# <Alt>End (custom3) - "liga|delisga som"
 
 function f_setkey () {
 
@@ -68,7 +69,7 @@ binding "<Alt>Page_Up"
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
-name "$KEYNINDS_CUSTOM2"
+name "$KEYBINDS_CUSTOM2"
 
 gsettings set \
 org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ \
